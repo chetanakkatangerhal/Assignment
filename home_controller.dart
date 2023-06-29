@@ -5,10 +5,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
-  Rx<List<EmployeeModel>> employees = Rx<List<EmployeeModel>>([]);
-  TextEditingController nameTextEditingController = TextEditingController();
-  TextEditingController addressTextEditingController = TextEditingController();
-  late EmployeeModel employeeModel;
+  Rx<List<CommentModel>> comment = Rx<List<CommentModel>>([]);
+  TextEditingController commentTextEditingController = TextEditingController();
+ 
+  late CommentModel commentModel;
   var itemCount = 0.obs;
   @override
   void onInit() {
@@ -27,16 +27,16 @@ class HomeController extends GetxController {
     addressTextEditingController.dispose();
   }
 
-  addEmployee(String name, String address) {
-    employeeModel = EmployeeModel(name: name, address: address);
-    employees.value.add(employeeModel);
-    itemCount.value = employees.value.length;
+  addComment(String comment) {
+    CommentModel = CommentModel(name: comment);
+    comment.value.add(CommentModel);
+    itemCount.value = comments.value.length;
     nameTextEditingController.clear();
     addressTextEditingController.clear();
   }
 
-  removeEmployee(int index) {
-    employees.value.removeAt(index);
+  removeComment(int index) {
+    comments.value.removeAt(index);
     itemCount.value = employees.value.length;
   }
 }
