@@ -5,10 +5,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
-  Rx<List<CommentModel>> comment = Rx<List<CommentModel>>([]);
-  TextEditingController commentTextEditingController = TextEditingController();
+  Rx<List<CommentsModel>> comments = Rx<List<CommentModel>>([]);
+  TextEditingController commentsTextEditingController = TextEditingController();
  
-  late CommentModel commentModel;
+  late CommentsModel commentsModel;
   var itemCount = 0.obs;
   @override
   void onInit() {
@@ -23,20 +23,20 @@ class HomeController extends GetxController {
   @override
   void onClose() {
     super.onClose();
-    nameTextEditingController.dispose();
-    addressTextEditingController.dispose();
+    commentsTextEditingController.dispose();
+   
   }
 
-  addComment(String comment) {
-    CommentModel = CommentModel(name: comment);
-    comment.value.add(CommentModel);
+  addComments(String comments) {
+    CommentsModel = CommentsModel(name: comments);
+    comments.value.add(CommentsModel);
     itemCount.value = comments.value.length;
-    nameTextEditingController.clear();
-    addressTextEditingController.clear();
+    commentsTextEditingController.clear();
+    
   }
 
-  removeComment(int index) {
+  removeComments(int index) {
     comments.value.removeAt(index);
-    itemCount.value = employees.value.length;
+    itemCount.value = comments.value.length;
   }
 }
