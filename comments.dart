@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class EmployeeModel {
-  final String? name;
-  final String? address;
+class CommentModel {
+  final String? comments;
+ 
 
-  EmployeeModel({
-    @required this.name,
-    @required this.address,
+  CommentModel({
+    @required this.comments,
+    
   });
 }
