@@ -17,7 +17,7 @@ class HomeView extends GetView<HomeController> {
         child: Column(
           children: [
             TextField(
-              controller: controller.nameTextEditingController,
+              controller: controller.commentsTextEditingController,
               decoration: const InputDecoration(
                 hintText: "Comments",
                 border: OutlineInputBorder(
@@ -33,7 +33,7 @@ class HomeView extends GetView<HomeController> {
             ),
             ElevatedButton(
               onPressed: () {
-                controller.addEmployee(
+                controller.addComments(
                     controller.nameTextEditingController.text,
                     controller.addressTextEditingController.text);
               },
@@ -44,16 +44,14 @@ class HomeView extends GetView<HomeController> {
                     itemCount: controller.itemCount.value,
                     itemBuilder: ((context, index) {
                       return ListTile(
-                        title: Text(controller.employees.value[index].name!),
-                        subtitle:
-                            Text(controller.employees.value[index].address!),
+                        title: Text(controller.comments.value[index].comments!),
                         trailing: GestureDetector(
                           child: const Icon(
                             Icons.delete,
                             color: Colors.red,
                           ),
                           onTap: () {
-                            controller.removeEmployee(index);
+                            controller.removeComments(index);
                           },
                         ),
                       );
